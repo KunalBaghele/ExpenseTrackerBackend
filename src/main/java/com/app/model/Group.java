@@ -3,6 +3,8 @@ package com.app.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,6 +24,7 @@ public class Group {
 	private String name;
 
 	@OneToMany(mappedBy = "group", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Participant> participants = new ArrayList<>();
 	
 	public double getTotalExpense() {

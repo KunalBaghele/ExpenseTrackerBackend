@@ -3,6 +3,8 @@ package com.app.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,6 +28,7 @@ public class Participant {
 	private Group group;
 
 	@OneToMany(mappedBy = "participant", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Expense> expenses = new ArrayList<>();
 
 	public int getId() {

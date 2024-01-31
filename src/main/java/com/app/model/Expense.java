@@ -2,6 +2,8 @@ package com.app.model;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,10 +20,11 @@ public class Expense {
 
 	private String description;
 	private Double amount;
-//	private LocalDateTime dateTime;
+	private LocalDateTime dateTime;
 
 	@ManyToOne
 	@JoinColumn(name = "participant_id")
+//	@JsonIgnore
 	private Participant participant;
 
 	public int getId() {
@@ -48,13 +51,13 @@ public class Expense {
 		this.amount = amount;
 	}
 
-//	public LocalDateTime getDateTime() {
-//		return dateTime;
-//	}
-//
-//	public void setDateTime(LocalDateTime dateTime) {
-//		this.dateTime = dateTime;
-//	}
+	public LocalDateTime getDateTime() {
+		return dateTime;
+	}
+
+	public void setDateTime(LocalDateTime dateTime) {
+		this.dateTime = dateTime;
+	}
 
 	public Participant getParticipant() {
 		return participant;
